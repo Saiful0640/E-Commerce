@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;700&family=Inter:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Inter', 'Noto Sans Bengali', sans-serif;
+}
+
+body {
+  @apply bg-gray-100 text-gray-900 min-h-screen;
+}
+
+.bengali {
+  font-family: 'Noto Sans Bengali', sans-serif;
+}
+
+/* Custom styles for the project */
+.section-header {
+  @apply bg-gov-blue text-white py-2 px-4 font-bold text-center rounded-sm uppercase tracking-wide;
+}
+
+.sidebar-card {
+  @apply bg-sidebar-bg border border-gray-200 p-4 mb-4 rounded shadow-sm;
+}
