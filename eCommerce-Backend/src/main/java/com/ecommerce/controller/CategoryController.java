@@ -2,8 +2,8 @@ package com.ecommerce.controller;
 
 import com.ecommerce.Config.AppDataConstants;
 import com.ecommerce.DTO.CategoryDTO;
-import com.ecommerce.Response.CategoryResponse;
-import com.ecommerce.service.ICategory;
+import com.ecommerce.response.CategoryResponse;
+import com.ecommerce.service.ICategoryService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api")
 public class CategoryController {
 
-    private ICategory iCategory;
+    private ICategoryService iCategory;
 
-    public CategoryController(ICategory iCategory) {
+    public CategoryController(ICategoryService iCategory) {
         this.iCategory = iCategory;
     }
 

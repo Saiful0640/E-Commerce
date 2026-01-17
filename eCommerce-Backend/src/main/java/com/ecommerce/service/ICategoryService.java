@@ -1,13 +1,13 @@
 package com.ecommerce.service;
 
 import com.ecommerce.DTO.CategoryDTO;
-import com.ecommerce.Response.CategoryResponse;
+import com.ecommerce.response.CategoryResponse;
 
-public interface ICategory {
+public interface ICategoryService {
 
     CategoryDTO addCategory(CategoryDTO categoryDTO);
 
-    String deleteCategory(Long category_id);
+    String deleteCategory(Long categoryId);
 
     CategoryDTO updateCategory(CategoryDTO categoryDTO, Long id);
 

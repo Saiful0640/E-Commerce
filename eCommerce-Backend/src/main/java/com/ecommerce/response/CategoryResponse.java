@@ -1,4 +1,4 @@
-package com.ecommerce.Response;
+package com.ecommerce.response;
 
 import com.ecommerce.DTO.CategoryDTO;
 import lombok.*;

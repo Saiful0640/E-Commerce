@@ -1,10 +1,10 @@
 package com.ecommerce.serviceImpl;
 
 import com.ecommerce.DTO.CategoryDTO;
-import com.ecommerce.Response.CategoryResponse;
+import com.ecommerce.response.CategoryResponse;
 import com.ecommerce.entity.Category;
 import com.ecommerce.repository.CategoryRepo;
-import com.ecommerce.service.ICategory;
+import com.ecommerce.service.ICategoryService;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class CategoryServiceImpl implements ICategory {
+public class CategoryServiceImpl implements ICategoryService {
 
     private CategoryRepo categoryRepo;
     private ModelMapper modelMapper;
@@ -34,19 +34,19 @@ public class CategoryServiceImpl implements ICategory {
     }
 
     @Override
-    public String deleteCategory(Long category_id) {
-        if (categoryRepo.existsById(category_id)) {
-            categoryRepo.deleteById(category_id);
-            return "Category deleted successfully with id: " + category_id;
+    public String deleteCategory(Long categoryId) {
+        if (categoryRepo.existsById(categoryId)) {
+            categoryRepo.deleteById(categoryId);
+            return "Category deleted successfully with id: " + categoryId;
         }
-        return "Category not found with id: " + category_id;
+        return "Category not found with id: " + categoryId;
     }
 
     @Override
     public CategoryDTO updateCategory(CategoryDTO categoryDTO, Long id) {
         if (categoryRepo.existsById(id)) {
             Category category = modelMapper.map(categoryDTO, Category.class);
-            category.setCategory_id(id);
+            category.setCategoryId(id);
             Category updatedCategory = categoryRepo.save(category);
             return modelMapper.map(updatedCategory, CategoryDTO.class);
         }
