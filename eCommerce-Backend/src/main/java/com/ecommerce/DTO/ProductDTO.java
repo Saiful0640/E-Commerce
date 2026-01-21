@@ -1,15 +1,12 @@
 package com.ecommerce.DTO;
 
-import com.ecommerce.entity.Category;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
+
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductDTO {
@@ -22,5 +19,67 @@ public class ProductDTO {
     private Double productDiscountPrice;
     private Double productSpecialPrice;
 
+    public Long getCategoryId() {
+        return categoryId;
+    }
 
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public String getProductDescription() {
+        return productDescription;
+    }
+
+    public void setProductDescription(String productDescription) {
+        this.productDescription = productDescription;
+    }
+
+    public Integer getProductQuantity() {
+        return productQuantity;
+    }
+
+    public void setProductQuantity(Integer productQuantity) {
+        this.productQuantity = productQuantity;
+    }
+
+    public String getProductImage() {
+        return productImage;
+    }
+
+    public void setProductImage(String productImage) {
+        this.productImage = productImage;
+    }
+
+    public Double getProductPrice() {
+        return productPrice;
+    }
+
+    public void setProductPrice(Double productPrice) {
+        this.productPrice = productPrice;
+    }
+
+    public Double getProductDiscountPrice() {
+        return productDiscountPrice;
+    }
+
+    public void setProductDiscountPrice(Double productDiscountPrice) {
+        this.productDiscountPrice = productDiscountPrice;
+    }
+
+    public Double getProductSpecialPrice() {
+        return productSpecialPrice;
+    }
+
+    public void setProductSpecialPrice(Double productSpecialPrice) {
+        this.productSpecialPrice = productSpecialPrice;
+    }
 }

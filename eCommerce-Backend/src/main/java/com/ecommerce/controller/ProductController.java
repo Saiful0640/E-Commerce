@@ -6,10 +6,7 @@ import com.ecommerce.response.ProductResponse;
 import com.ecommerce.service.IProductService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
@@ -22,7 +19,7 @@ public class ProductController {
     }
 
 
-    @RequestMapping("admin/categories/{categoryId}/product")
+    @PostMapping("admin/categories/{categoryId}/product")
     public ResponseEntity<ProductDTO> addProduct(@RequestBody Product prodcut, @PathVariable Long categoryId) {
 
         ProductDTO productDTO = productService.addProduct(prodcut, categoryId);
@@ -31,11 +28,20 @@ public class ProductController {
 
     }
 
-    @RequestMapping("public/products")
+    @GetMapping("public/products")
     public ResponseEntity<ProductResponse> getAllProducts() {
 
         ProductResponse productResponse = productService.getAllProductC();
 
         return new ResponseEntity<>(productResponse, HttpStatus.OK);
     }
+
+    @GetMapping("public/categories/{categoryid}/product")
+    public ResponseEntity<ProductResponse> getAllProductsByCategory(@PathVariable Long categoryid) {
+        ProductResponse productResponse = productService.getProductByCategory(categoryid);
+        return new ResponseEntity<>(productResponse, HttpStatus.OK);
+    }
+
+
+
 }

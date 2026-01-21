@@ -29,8 +29,9 @@ public class ProdcutServiceImpl implements IProductService {
     @Override
     public ProductDTO addProduct(Product product, Long categoryId) {
 
-        Category category = categoryRepo.findById(categoryId).orElseThrow(()-> new ResourceNotFoundException("Category","categoryId",categoryId));
-        product.setProductImage("Default.png");
+        Category category = categoryRepo.findById(categoryId)
+                .orElseThrow(() -> new ResourceNotFoundException("Category", "categoryId", categoryId));
+        product.setProductImage("asdasd");
         product.setProductCategory(category);
         Double specialprice = product.getProductPrice();
         product.setProductSpecialPrice(specialprice);
@@ -52,7 +53,8 @@ public class ProdcutServiceImpl implements IProductService {
     public ProductResponse getAllProductC() {
 
         List<Product> products = productRepo.findAll();
-        List<ProductDTO> productDTOS = products.stream().map(product -> modelMapper.map(product, ProductDTO.class)).toList();
+        List<ProductDTO> productDTOS = products.stream().map(product -> modelMapper.map(product, ProductDTO.class))
+                .toList();
 
         ProductResponse productResponse = new ProductResponse();
         productResponse.setContent(productDTOS);
@@ -61,15 +63,16 @@ public class ProdcutServiceImpl implements IProductService {
 
     @Override
     public ProductResponse getProductByCategory(Long categoryId) {
-        Category categorys = categoryRepo.findById(categoryId).orElseThrow(()-> new ResourceNotFoundException("Category","categoryId",categoryId));
-        List<Product> product = productRepo.findByProductCategoryOrderByProductPriceAsc(categorys);
-        List<ProductDTO> productDTOS = product.stream().map(products -> modelMapper.map(product, ProductDTO.class)).toList();
+        Category category = categoryRepo.findById(categoryId)
+                .orElseThrow(() -> new ResourceNotFoundException("Category", "categoryId", categoryId));
+        List<Product> products = productRepo.findByProductCategoryOrderByProductPriceAsc(category);
+        List<ProductDTO> productDTOS = products.stream().map(product -> modelMapper.map(product, ProductDTO.class))
+                .toList();
 
         ProductResponse productResponse = new ProductResponse();
         productResponse.setContent(productDTOS);
         return productResponse;
 
     }
-
 
 }
